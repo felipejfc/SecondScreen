@@ -1,8 +1,9 @@
 package com.projetoes.secondscreen;
 
-import keyboard.Keyboard;
-import keyboard.OnKeyClickListener;
-import keyboard.OnSendListener;
+import com.projetoes.secondscreen.keyboard.Keyboard;
+import com.projetoes.secondscreen.keyboard.OnKeyClickListener;
+import com.projetoes.secondscreen.keyboard.OnSendListener;
+
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;

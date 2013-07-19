@@ -3,21 +3,25 @@ package com.projetoes.secondscreen.client;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.PrintStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-class TCPClient {
-	
+/**
+ * 
+ * @author felipe
+ *
+ */
+class TCPClient{
 	protected Socket clientSocket;
-	protected PrintWriter outToServer;
+	protected PrintStream outToServer;
 	protected BufferedReader inFromServer;
 	
 	public TCPClient(String ipAddr, int port) {
-		//TODO Aprender a lidar com as excessıes
+		//TODO Aprender a lidar com as excess√µes
 		try {
-			this.clientSocket = new Socket(ipAddr, port);
-			outToServer = new PrintWriter(clientSocket.getOutputStream(),true);
+			clientSocket = new Socket(ipAddr, port);
+			outToServer = new PrintStream(clientSocket.getOutputStream());
 			inFromServer = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
@@ -26,6 +30,11 @@ class TCPClient {
 		}
 	}
 	
+	/**
+	 * Thread that send and receive data
+	 * @author felipe
+	 *
+	 */
 	class SendDataThread extends Thread{
 		
 		String data;
@@ -36,13 +45,30 @@ class TCPClient {
 		
 		@Override
 		public void run() {
-			outToServer.print(data);
+			//TODO callback method
+			String dataRecv = "";
+			while(dataRecv.length()<1){
+				try {
+					sleep(2000);
+					System.out.println("here");
+					dataRecv = inFromServer.readLine();
+				} catch (Exception e) {
+					//TODO como lidar com os erros?
+					e.printStackTrace();
+				}
+			}
+			System.out.println("Got "+dataRecv);
 		}
 	}
 	
+	/**
+	 * Method that create the thread and sends the data
+	 * @param data
+	 */
 	public void send(String data){
 		Thread sendThread = new SendDataThread(data);
 		sendThread.start();
 	}	
 
 }
+

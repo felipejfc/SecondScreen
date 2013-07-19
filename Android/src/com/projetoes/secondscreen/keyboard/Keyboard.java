@@ -1,4 +1,4 @@
-package keyboard;
+package com.projetoes.secondscreen.keyboard;
 
 import java.util.Collection;
 import java.util.HashSet;

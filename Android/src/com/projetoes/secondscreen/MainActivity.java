@@ -81,7 +81,9 @@ public class MainActivity extends Activity {
 		EditText ipPortBox = (EditText) findViewById(R.id.editIpPort);
 		String ip = ipPortBox.getText().toString().split(":")[0];
 		Integer port = Integer.parseInt(ipPortBox.getText().toString().split(":")[1]);
-		tcpClient = new TCPClient(ip, port);
+		if(tcpClient == null){
+			tcpClient = new TCPClient(ip, port);
+		}
 
 		String toSend = ((EditText)findViewById(R.id.editSend2)).getText().toString();
 		tcpClient.send(toSend);

@@ -13,7 +13,7 @@ import android.util.Log;
  *
  */
 public class TCPClient{
-	protected Socket clientSocket;
+	protected Socket clientSocket = null;
 	protected PrintStream outToServer;
 	protected BufferedReader inFromServer;
 	protected String ipAddr;
@@ -40,10 +40,13 @@ public class TCPClient{
 		public void run() {
 			//TODO callback method
 			try{
-				clientSocket = new Socket(ipAddr, port);
-				outToServer = new PrintStream(clientSocket.getOutputStream());
-				inFromServer = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-				Log.i("SecoundScreen", "Connected");
+				if(clientSocket == null){
+					clientSocket = new Socket(ipAddr, port);
+					outToServer = new PrintStream(clientSocket.getOutputStream());
+					inFromServer = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+					clientSocket.setKeepAlive(true);
+					Log.i("SecoundScreen", "Connected");
+				}
 			}catch(Exception e){
 				Log.e("SecoundScreen", e.getMessage());
 			}

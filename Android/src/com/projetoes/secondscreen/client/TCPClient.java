@@ -1,33 +1,26 @@
 package com.projetoes.secondscreen.client;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.net.Socket;
-import java.net.UnknownHostException;
+
+import android.util.Log;
 
 /**
  * 
  * @author felipe
  *
  */
-class TCPClient{
+public class TCPClient{
 	protected Socket clientSocket;
 	protected PrintStream outToServer;
 	protected BufferedReader inFromServer;
-	
+	protected String ipAddr;
+	protected Integer port;
 	public TCPClient(String ipAddr, int port) {
-		//TODO Aprender a lidar com as excessões
-		try {
-			clientSocket = new Socket(ipAddr, port);
-			outToServer = new PrintStream(clientSocket.getOutputStream());
-			inFromServer = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-		} catch (UnknownHostException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		this.ipAddr = ipAddr;
+		this.port = port;
 	}
 	
 	/**
@@ -46,18 +39,31 @@ class TCPClient{
 		@Override
 		public void run() {
 			//TODO callback method
+			try{
+				clientSocket = new Socket(ipAddr, port);
+				outToServer = new PrintStream(clientSocket.getOutputStream());
+				inFromServer = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+				Log.i("SecoundScreen", "Connected");
+			}catch(Exception e){
+				Log.e("SecoundScreen", e.getMessage());
+			}
+			outToServer.println(data);
 			String dataRecv = "";
 			while(dataRecv.length()<1){
 				try {
 					sleep(2000);
-					System.out.println("here");
+					System.out.println("Waiting for server response...");
 					dataRecv = inFromServer.readLine();
 				} catch (Exception e) {
-					//TODO como lidar com os erros?
-					e.printStackTrace();
+					Log.e("SecoundScreen", e.getMessage());
 				}
 			}
-			System.out.println("Got "+dataRecv);
+			Log.i("SecoundScreen", "Response: "+dataRecv);
+			try {
+				finalize();
+			} catch (Throwable e) {
+				Log.e("SecoundScreen", e.getMessage());
+			}
 		}
 	}
 	

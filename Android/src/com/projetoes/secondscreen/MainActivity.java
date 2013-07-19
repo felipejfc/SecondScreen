@@ -1,24 +1,25 @@
 package com.projetoes.secondscreen;
 
-import com.projetoes.secondscreen.keyboard.Keyboard;
-import com.projetoes.secondscreen.keyboard.OnKeyClickListener;
-import com.projetoes.secondscreen.keyboard.OnSendListener;
-
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import com.projetoes.secondscreen.client.TCPClient;
+import com.projetoes.secondscreen.keyboard.Keyboard;
+import com.projetoes.secondscreen.keyboard.OnKeyClickListener;
+import com.projetoes.secondscreen.keyboard.OnSendListener;
 
 public class MainActivity extends Activity {
 
 	private Keyboard keys;
-	
+	private TCPClient tcpClient;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -74,4 +75,17 @@ public class MainActivity extends Activity {
 		Button buttonAppear = (Button) this.findViewById(R.id.buttonAppear);
 		buttonAppear.setEnabled(false);
 	}
+	
+
+	public void send2Action(View view){
+		EditText ipPortBox = (EditText) findViewById(R.id.editIpPort);
+		String ip = ipPortBox.getText().toString().split(":")[0];
+		Integer port = Integer.parseInt(ipPortBox.getText().toString().split(":")[1]);
+		tcpClient = new TCPClient(ip, port);
+
+		String toSend = ((EditText)findViewById(R.id.editSend2)).getText().toString();
+		tcpClient.send(toSend);
+		Toast.makeText(getApplicationContext(), "Sent!", Toast.LENGTH_SHORT).show();
+	}
+	
 }

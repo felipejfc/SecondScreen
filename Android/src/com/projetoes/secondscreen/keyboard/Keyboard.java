@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
+import com.projetoes.secondscreen.client.TCPClient;
+
 /**
  * Class to manager the keyboard to the SecondScreen application
  * 
@@ -82,7 +84,7 @@ public class Keyboard {
 	 */
 	public void send() {
 		if (this.initialized) {
-			// TODO chamar coisas de felipe aqui
+			TCPClient.getInstace().send(this.editText.getText().toString());
 			warnsOnSendListeners();
 		} else {
 			throw new IllegalStateException(

@@ -1,0 +1,66 @@
+/*******************************************************************************
+ * Copyright (c) 2012- Fundação CERTI
+ * All rights reserved.
+ *******************************************************************************/
+
+create table if not exists application(
+	id INTEGER PRIMARY KEY, 
+	applicationType INTEGER NOT NULL, 
+	name TEXT NOT NULL, 
+	icon TEXT NOT NULL, 
+	entrypoint TEXT NOT NULL, 
+	directory TEXT NOT NULL, 
+	namespace TEXT NOT NULL, 
+	downloaded INTEGER NOT NULL, 
+	autostart INTEGER NOT NULL,
+	description TEXT, 
+	version TEXT, 
+	provider TEXT,
+	autofocus INTEGER NOT NULL);
+
+INSERT OR IGNORE INTO "application" VALUES(1,0,'zapper_tpv','sss','main.lua','./application/nativeapps/','aa',0,1,'gf','1','tpv',1);
+INSERT OR IGNORE INTO "application" VALUES(11,0,'store','main1280=res/ic.png,favorite1280=res/fav.png','play.lua','./application/userapps/store//','store',1,0,'store','1.2','UFCG',0);
+INSERT OR IGNORE INTO "application" VALUES(11,0,'battleship','main1280=res/ic.png,favorite1280=res/fav.png','src/main.lua','./application/userapps/battleship/','battleship',1,0,'battleship','1.2','UFCG',0);
+INSERT OR IGNORE INTO "application" VALUES(12,0,'blackjack','main1280=res/ic.png,favorite1280=res/fav.png','src/main.lua','./application/userapps/blackjack/','blackjack',1,0,'blackjack','1.2','UFCG',0);
+INSERT OR IGNORE INTO "application" VALUES(13,0,'chat','main1280=res/ic.png,favorite1280=res/fav.png','src/main.lua','./application/userapps/chat/','chat',1,0,'chat','1.2','UFCG',0);
+INSERT OR IGNORE INTO "application" VALUES(14,0,'instagram','main1280=res/instagram-ic-hub.png,favorite1280=res/instagram-ic-hub-favorite.png','src/main.lua','./application/userapps/instagram/','instagram',1,0,'instagram','1.2','UFCG',0);
+INSERT OR IGNORE INTO "application" VALUES(15,0,'googlemaps','main1280=res/maps-ic-hub.png,favorite1280=res/maps-ic-hub-favorite.png','src/main.lua','./application/userapps/googlemaps/','googlemaps',1,0,'googlemaps','1.2','UFCG',0);
+INSERT OR IGNORE INTO "application" VALUES(16,0,'facebook','main1280=res/facebook-ic-hub.png,favorite1280=res/facebook-ic-hub-favorite.png','src/main.lua','./application/userapps/facebook/','facebook',1,0,'facebook','1.2','UFCG',0);
+INSERT OR IGNORE INTO "application" VALUES(17,0,'delicious','main1280=res/ic.png,favorite1280=res/fav.png','src/main.lua','./application/userapps/delicious/','delicious',1,0,'delicious','1.2','UFCG',0);
+INSERT OR IGNORE INTO "application" VALUES(18,0,'picasa','main1280=res/ic.png,favorite1280=res/fav.png','src/main.lua','./application/userapps/picasa/','picasa',1,0,'picasa','1.2','UFCG',0);
+INSERT OR IGNORE INTO "application" VALUES(19,0,'rss','main1280=res/ic.png,favorite1280=res/fav.png','src/main.lua','./application/userapps/rss/','rss',1,0,'rss','1.2','UFCG',0);
+INSERT OR IGNORE INTO "application" VALUES(20,0,'sokoban','main1280=res/sokoban-ic-hub.png,favorite1280=res/sokoban-ic-hub-favorite.png','src/main.lua','./application/userapps/sokoban/','sokoban',1,0,'sokoban','1.2','UFCG',0);
+INSERT OR IGNORE INTO "application" VALUES(21,0,'spaceinvaders','main1280=res/spacedefender-ic-hub.png,favorite1280=res/spacedefender-ic-hub-favorite.png','src/main.lua','./application/userapps/spaceinvaders/','spaceinvaders',1,0,'spaceinvaders','1.2','UFCG',0);
+INSERT OR IGNORE INTO "application" VALUES(22,0,'terra','main1280=res/ic.png,favorite1280=res/fav.png','src/main.lua','./application/userapps/terra/','terra',1,0,'terra','1.2','UFCG',0);
+INSERT OR IGNORE INTO "application" VALUES(23,0,'twitter','main1280=res/ic.png,favorite1280=res/fav.png','src/main.lua','./application/userapps/twitter/','twitter',1,0,'twitter','1.2','UFCG',0);
+INSERT OR IGNORE INTO "application" VALUES(24,0,'vimeo','main1280=res/vimeo-ic-hub_145.png,favorite1280=res/vimeo-ic-hub-favorite.png','src/main.lua','./application/userapps/vimeo/','vimeo',1,0,'vimeo','1.2','UFCG',0);
+INSERT OR IGNORE INTO "application" VALUES(25,0,'dominoes','main1280=res/dominoes-ic-hub.png,favorite1280=res/dominoes-ic-hub-favorite.png','src/main.lua','./application/userapps/dominoes/','dominoes',1,0,'dominoes','1.2','UFCG',0);
+INSERT OR IGNORE INTO "application" VALUES(26,0,'yahoo','main1280=res/ic.png,favorite1280=res/fav.png','src/main.lua','./application/userapps/yahoo/','yahoo',1,0,'yahoo','1.2','UFCG',0);
+INSERT OR IGNORE INTO "application" VALUES(27,0,'flickr','main1280=res/ic.png,favorite1280=res/fav.png','src/main.lua','./application/userapps/flickr/','flickr',1,0,'flickr','1.2','UFCG',0);
+INSERT OR IGNORE INTO "application" VALUES(28,0,'googlecalendar','main1280=res/calendar-ic-hub.png,favorite1280=res/calendar-ic-hub-favorite.png','src/main.lua','./application/userapps/googlecalendar/','googlecalendar',1,0,'googlecalendar','1.2','UFCG',0);
+INSERT OR IGNORE INTO "application" VALUES(29,0,'youtube','main1280=res/youtube-ic-hub.png,favorite1280=res/youtube-ic-hub-favorite.png','src/main.lua','./application/userapps/youtube/','youtube',1,0,'youtube','1.2','UFCG',0);
+INSERT OR IGNORE INTO "application" VALUES(30,0,'radio','main1280=res/radiotv-icon-hub.png,favorite1280=res/radiotv-ic-hub-favorite.png','src/main.lua','./application/userapps/radio/','radio',1,0,'radio','1.2','UFCG',0);
+INSERT OR IGNORE INTO "application" VALUES(31,0,'smartbar','main1280=res/radio-ic-hub.png,favorite1280=res/radio-ic-hub-favorite.png','play.lua','./application/userapps/personal-tv/client/','smartbar',1,0,'smartbar','1.2','UFCG',0);
+INSERT OR IGNORE INTO "application" VALUES(32,0,'SecondScreen','main1280=img/ic_launcher.png,favorite1280=img/ic_launcher.png','play.lua','./application/Projeto_es/','SecondScreen',1,0,'SecondScreen','1.2','UFCG',1);
+
+create table if not exists output(
+	id INTEGER PRIMARY KEY, 
+	label TEXT, 
+	outputType TEXT, 
+	color INTEGER, 
+	hue INTEGER, 
+	brightness INTEGER, 
+	contrast INTEGER, 
+	aspect TEXT);
+create table if not exists systemprefs(key TEXT PRIMARY KEY, value TEXT);
+INSERT OR IGNORE INTO "systemprefs" VALUES('availableTunerModes','Air,Cable');
+INSERT OR IGNORE INTO "systemprefs" VALUES('Password','0000');
+INSERT OR IGNORE INTO "systemprefs" VALUES('OSDTimeOut','5000');
+INSERT OR IGNORE INTO "systemprefs" VALUES('currentLanguage','En');
+INSERT OR IGNORE INTO "systemprefs" VALUES('currTunerMode','Air');
+INSERT OR IGNORE INTO "systemprefs" VALUES('lastChanId','0');
+INSERT OR IGNORE INTO "systemprefs" VALUES('parentalLevel','OFF');
+INSERT OR IGNORE INTO "systemprefs" VALUES('AutoTime','true');
+INSERT OR IGNORE INTO "systemprefs" VALUES('AutoPowerOff','true');
+INSERT OR IGNORE INTO "systemprefs" VALUES('BlueScreen','true');
+

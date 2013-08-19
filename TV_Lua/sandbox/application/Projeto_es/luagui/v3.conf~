@@ -1,0 +1,144 @@
+DEFAULT_IMAGE_PATH = SB_RES_PATH .. "images/keyboard/v3/"
+
+BGDEFAULT = DEFAULT_IMAGE_PATH.."bg.png"
+BIGBG_ACENTSDEFAULT = DEFAULT_IMAGE_PATH.."special_6.png"
+SMALLBG_ACENTSDEFAULT = DEFAULT_IMAGE_PATH.."special_2.png"
+
+SPACE_BETWEEN_BUTTONS = {X=36.5, Y=32 }
+FONT_SIZE = 17
+FONT_COLOR = {R=0, G=0, B=0, A=255}
+
+DETAILS_SPECIALBUTTONS = { noShift = DEFAULT_IMAGE_PATH.."simbols_shift1.png",
+                                shift = DEFAULT_IMAGE_PATH.."simbols_shift2.png",
+                                fixo = DEFAULT_IMAGE_PATH.."simbols_shift2.png",
+                                space = DEFAULT_IMAGE_PATH.."simbols_space.png",
+                                backSpace = DEFAULT_IMAGE_PATH.."simbols_del.png",
+                                cursorLeft = DEFAULT_IMAGE_PATH.."simbols_left.png",
+                                cursorRight = DEFAULT_IMAGE_PATH.."simbols_right.png",
+                                alpha = DEFAULT_IMAGE_PATH.."ic-alfa.png",
+                                num = DEFAULT_IMAGE_PATH.."simbols_123.png"
+}
+
+DETAILS_SPECIALBUTTONS_OFF = { noShift = DEFAULT_IMAGE_PATH.."simbols_shift1.png",
+                                space = DEFAULT_IMAGE_PATH.."simbols_space.png",
+                                backSpace = DEFAULT_IMAGE_PATH.."simbols_del.png",
+                                cursorLeft = DEFAULT_IMAGE_PATH.."simbols_left.png",
+                                cursorRight = DEFAULT_IMAGE_PATH.."simbols_right.png",
+                                num = DEFAULT_IMAGE_PATH.."simbols_123.png"
+}
+
+BTTDEFAULT = { normal = DEFAULT_IMAGE_PATH.."key_norm_b.png",
+                    selected=DEFAULT_IMAGE_PATH.."key_select.png",
+                    click=DEFAULT_IMAGE_PATH.."key_press.png"
+                    }
+                    
+BTTDEFAULT_RED = {normal = DEFAULT_IMAGE_PATH.."key_norm_red.png",
+                        selected = DEFAULT_IMAGE_PATH.."key_select_r.png",
+                        click = DEFAULT_IMAGE_PATH.."key_press_red.png"
+                        }
+                            
+BTTDEFAULT_GREEN = {normal = DEFAULT_IMAGE_PATH.."key_norm_g.png",
+                        selected = DEFAULT_IMAGE_PATH.."key_select_g.png",
+                        click = DEFAULT_IMAGE_PATH.."key_press_green.png"
+                        }
+                        
+BTTDEFAULT_YELLOW = {normal = DEFAULT_IMAGE_PATH.."key_norm_r.png",
+                        selected = DEFAULT_IMAGE_PATH.."key_select_y.png",
+                        click = DEFAULT_IMAGE_PATH.."key_press_y.png"
+                        }
+                        
+BTTDEFAULT_BLUE = {normal = DEFAULT_IMAGE_PATH.."key_norm_blue.png",
+                        selected = DEFAULT_IMAGE_PATH.."key_select_b.png",
+                        click = DEFAULT_IMAGE_PATH.."key_press_b.png"
+                        } 
+BTTDEFAULT_DOUBLE = {
+                    normal = DEFAULT_IMAGE_PATH.."keyspace_norm.png",
+                    selected=DEFAULT_IMAGE_PATH.."key_select_y.png",
+                    click=DEFAULT_IMAGE_PATH.."key_norm_r.png"
+}
+
+BTTDEFAULT_OFF = {
+                    normal = DEFAULT_IMAGE_PATH.."key_norm_b.png",
+                    red = DEFAULT_IMAGE_PATH.."key_select_r.png",
+                    green = DEFAULT_IMAGE_PATH.."key_select_g.png",
+                    yellow = DEFAULT_IMAGE_PATH.."key_select_y.png",
+                    blue = DEFAULT_IMAGE_PATH.."key_select_b.png"
+}
+
+ALFANUMERICO_DEFAULT = {
+                {'a', 'b', 'c', 'd', 'e', '1', '2', '3'},
+                {'f', 'g', 'h', 'i', 'j', '4', '5', '6'},
+                {'k', 'l', 'm', 'n', 'o', '7', '8', '9'},
+                {'p', 'q', 'r', 's', 't', '.', '@', '0'},
+                {'u', 'v', 'w', 'x', 'y', 'z', '_', '/'},
+                {'GREEN', 'SIMBOL', 'SPACE', 'LEFT', 'RIGHT', 'BACKSPACE'}
+                }
+
+ALFANUMERICO_SHIFT = {
+                {'A', 'B', 'C', 'D', 'E', '1', '2', '3'},
+                {'F', 'G', 'H', 'I', 'J', '4', '5', '6'},
+                {'K', 'L', 'M', 'N', 'O', '7', '8', '9'}, 
+                {'P', 'Q', 'R', 'S', 'T', '.', '@', '0'},
+                {'U', 'V', 'W', 'X', 'Y', 'Z', '_', '/'},
+                {'GREEN', 'SIMBOL', 'SPACE', 'LEFT', 'RIGHT', 'BACKSPACE'}
+                }
+
+SIMBOLIC = {
+             {'^', '~', '?', '!', '\'', '"', '(', ')'},
+             {'-', ':', ';', '+', '&', '%', '*', '=',},
+             {'<', '>', '€', '£', '$', '#', '\\','¡'},
+             {'[', ']', '{', '}', ',', '.','@', '¿'},
+             { ":)",":]",":(",":[","<3","xD","^^'",'/'},
+            {'GREEN', 'SIMBOL', 'SPACE', 'LEFT', 'RIGHT', 'BACKSPACE'}
+            }
+             
+MAPTYPE_NOT_ISRUNNING = {
+                {0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0,0,0,0}
+            }
+            
+CONTROL_MOVIMENTS_SIMBOLS = {
+                {1, 2, 3, 4, 5, 6, 7, 8},
+                {1, 2, 3, 4, 5, 6, 7, 8},
+                {1, 2, 3, 4, 5, 6, 7, 8},
+                {1, 2, 3, 4, 5, 6, 7, 8},
+                {1, 2, 3, 4, 5, 6, 7, 8},
+                {1, 2, 3, 3, 3, 4, 5, 6}
+            }
+            
+CONTROL_MOVIMENTS_DEFAULT = {
+                {1, 2, 3, 4, 5, 6, 7, 8},
+                {1, 2, 3, 4, 5, 6, 7, 8},
+                {1, 2, 3, 4, 5, 6, 7, 8},
+                {1, 2, 3, 4, 5, 6, 7, 8},
+                {1, 2, 3, 4, 5, 6, 7, 8},
+                {1, 2, 3, 3, 3, 4, 5, 6}
+            }
+            
+MAPTYPE_ISRUNNING = {
+                {3, 1, 1, 1, 1, 1, 1, 1},
+                {1, 1, 1, 1, 1, 1, 1, 1},
+                {1, 1, 1, 1, 1, 1, 1, 1},
+                {1, 1, 1, 1, 1, 1, 1, 1},
+                {1, 1, 1, 1, 1, 1, 1, 1},
+                {1, 1, 1, 1, 1, 1, 1, 1},      
+            }        
+ACCENTS_KEYS  = {
+                a = {"a", "á", "à", "â", "ã","ä"},
+                e = {"e", "é", "è", "ê", "ë"},
+                i = {"i", "í", "ì", "î", "ï"},
+                o = {"o", "ó", "ò", "ô", "õ", "ö"},
+                u = {"u", "ú", "ù", "û", "ü"},
+                c = {"c", "ç"},
+                
+                A = {"A", "Á", "À", "Ã", "Â", "Ä"},
+                E = {"E", "É", "È", "Ê", "Ë"},
+                I = {"I", "Í", "Ì", "Î", "Ï"},
+                O = {"O", "Ó", "Ò", "Ô", "Õ", "Ö"},
+                U = {"U", "Ú", "Ù", "Û", "Ü"},
+                C = {"C", "Ç"}
+            }

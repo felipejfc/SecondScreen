@@ -29,7 +29,7 @@ local imageIconsFocus = nil
 local iconVolume = nil
 
 local nameMenu = {"Aplicações", "Media Center", "Entrada", "Imagem", "Audio", "Configurações"}
-
+local avaliableChannels = {"3","7","9","13"}
 local posChannel = 1
 local posMenuPrincipal = 1
 local volume = 0--control.getVolume ()
@@ -47,9 +47,9 @@ local x, y,w, h = nil
 
 local function loadImages()
 	channelGlobo = canvas:new('res/globo.png')
-	channelBand = canvas:new('res/band.jpg')
-	channelSbt = canvas:new('res/sbt.jpg')
-	channelRecord = canvas:new('res/record.jpg')
+	channelBand = canvas:new('res/band.png')
+	channelSbt = canvas:new('res/sbt.png')
+	channelRecord = canvas:new('res/record.png')
 
 	iconVolumeMute = canvas:new('res/icon/ico-mute.png')
 	iconVolume0 = canvas:new('res/icon/ico-volume_00.png')
@@ -73,7 +73,11 @@ local function loadImages()
 	iconSettingsFocus = canvas:new('res/icon/ico-settings_focus.png')
 
 	bgMenuFocus = canvas:new('res/icon/selectMenu.png')
-	channels = {channelBand, channelGlobo, channelSbt, channelRecord}
+	channels = {}
+	channels["3"] =  channelGlobo 
+	channels["7"] = channelBand
+	channels["9"] =  channelSbt
+	channels["13"] =   channelRecord
 	imageIconsNormal = {iconAppNormal, iconMediaNormal, iconInputNormal, iconPictureNormal, iconAudioNormal, iconSettingsNormal}
 	imageIconsFocus = {iconAppFocus, iconMediaFocus, iconInputFocus, iconPictureFocus, iconAudioFocus, iconSettingsFocus}
 	iconVolume = {iconVolume0 ,iconVolume1 , iconVolume2, iconVolume3}
@@ -186,7 +190,7 @@ local function getColor()
 end
 
 local function clearBackground(x,y, widht, height, canFlush)
-	canvas:compose(x,y,channels[posChannel + 1], x, y, widht, height)
+	canvas:compose(x,y,channels[avaliableChannels[posChannel + 1]], x, y, widht, height)
 	if(canFlush)then
 		canvas:flush()
 	end
@@ -229,7 +233,7 @@ end
 local function paintImage(canDrawVolume)
 	canvas:attrColor(getColor())
 	canvas:clear()
-	canvas:compose(0,0,channels[posChannel + 1])
+	canvas:compose(0,0,channels[avaliableChannels[posChannel+1]])
 	if(volume == 0)then
 		drawBarVolume(true)	
 	else
@@ -250,11 +254,13 @@ local function changeChannel(numberChannel)
 	clearBackground(1200,0, 80, 80, false)
 	canvas:drawText(1200, 40, setChannel)	
 	canvas:flush()
-	
+	print("canal",avaliableChannels[tostring(setChannel)])
 	cancelChangeChannel = event.timer(2000, function()
-		if(tonumber(setChannel) < #channels)then
-			posChannel = tonumber(setChannel)
+		for i,v in pairs(avaliableChannels) do
+		if(v == tostring(setChannel))then
+			posChannel = tonumber(i)-1
 			paintImage()
+			break
 		else
 					
 			print("vou mudar de canal")
@@ -265,8 +271,10 @@ local function changeChannel(numberChannel)
 			end)
 			
 		end
+		end
 		setChannel = ""	
 		
+
 	end)
 end
 
@@ -348,12 +356,12 @@ function onKeyPress(evt)
 			
 		elseif(evt.key == 'CHANNEL_DOWN') then
 			showMenu = false
-			posChannel = (posChannel - 1) % 4 
+			posChannel = (posChannel - 1) % #avaliableChannels
 			paintImage()
 			
 		elseif (evt.key == 'CHANNEL_UP') then
 			showMenu = false
-			posChannel = (posChannel + 1) % 4
+			posChannel = (posChannel + 1) % #avaliableChannels
 			paintImage()
 			
 		elseif (evt.key == 'CURSOR_LEFT') then
@@ -392,12 +400,12 @@ local function initializeVariables()
 	event.register(onKeyPress)
 	loadImages()
 	
-	--~ video = mediaPlayer:new('dtv://video')
-	--~ video:prepare()
-	--~ x, y,w, h = video:getBounds()
-	--~ video:setBounds(397, 16, 868, 488)
-	--~ video:start()
-paintImage()
+	video = mediaPlayer:new('dtv://video')
+	video:prepare()
+	x, y,w, h = video:getBounds()
+	video:setBounds(0, 0, 790, 440)
+	video:start()
+	--~ paintImage()
 
 
 

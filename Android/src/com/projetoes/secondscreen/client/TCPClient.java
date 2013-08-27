@@ -1,6 +1,7 @@
 package com.projetoes.secondscreen.client;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.net.Socket;
@@ -16,18 +17,25 @@ public class TCPClient {
 	protected BufferedReader inFromServer;
 	protected String ipAddr;
 	protected Integer port;
+	protected String log = "";
 	private static TCPClient instance;
-
 	private TCPClient() {
 	}
-	
-	public static TCPClient getInstace(){
-		if(instance == null){
+
+	public static TCPClient getInstace() {
+		if (instance == null) {
 			instance = new TCPClient();
 		}
 		return instance;
-	}
 
+	}
+	public synchronized String getRetorno(){
+		return log;
+	}
+	
+	public synchronized void setRetorno(String val){
+		this.log = val;
+	}
 	public String getIpAddr() {
 		return ipAddr;
 	}
@@ -52,6 +60,12 @@ public class TCPClient {
 	public void send(String data) {
 		Thread sendThread = new SendDataThread(data);
 		sendThread.start();
+//		try {
+//			sendThread.join();
+//		} catch (InterruptedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 	}
 
 	/**
@@ -69,37 +83,41 @@ public class TCPClient {
 
 		@Override
 		public void run() {
-			// TODO callback method
 			try {
-				if (clientSocket == null) {
-					clientSocket = new Socket(ipAddr, port);
-					outToServer = new PrintStream(
-							clientSocket.getOutputStream());
-					inFromServer = new BufferedReader(new InputStreamReader(
-							clientSocket.getInputStream()));
-					clientSocket.setKeepAlive(true);
-					Log.i("SecoundScreen", "Connected");
-				}
-			} catch (Exception e) {
-				Log.e("SecoundScreen", e.getMessage());
+			if (clientSocket == null) {
+				clientSocket = new Socket(ipAddr, port);
 			}
-			outToServer.println(data);
+				outToServer = new PrintStream(clientSocket.getOutputStream());
+				inFromServer = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+				clientSocket.setKeepAlive(true);
+				Log.i("SecoundScreen", "Connected");
+
+
+			if (data != null) {
+				outToServer.println(data);
+			}
 			String dataRecv = "";
-			while (dataRecv == null || dataRecv.length() < 1) {
-				try {
-					sleep(2000);
-					System.out.println("Waiting for server response...");
-					dataRecv = inFromServer.readLine();
-				} catch (Exception e) {
-					Log.e("SecoundScreen", e.getMessage());
-				}
+			while (dataRecv.length() < 1) {
+				
+				System.out.println("Waiting for server response...");
+				dataRecv = inFromServer.readLine();
+				Log.i("dataRecv" , dataRecv);
+				setRetorno(dataRecv);
+				sleep(100);
 			}
-			Log.i("SecoundScreen", "Response: " + dataRecv);
-			try {
+			
 				finalize();
-			} catch (Throwable e) {
-				Log.e("SecoundScreen", e.getMessage());
-			}
+			
+		}catch (IOException e){
+			clientSocket = null;
+			Log.i("IOException" , e.getMessage());
+			setRetorno( "IOException");
+		}catch (Throwable e) {
+			clientSocket = null;
+			if (e.getMessage() != null){
+			Log.i("Throwable" , e.getMessage());}
+			
+		} 
 		}
 	}
 }

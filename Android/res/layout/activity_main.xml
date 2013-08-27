@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+    android:splitMotionEvents="false"
 >
 
     <ImageView
@@ -146,32 +147,6 @@
          android:contentDescription="@string/button"/>
 
     <ImageButton
-        android:id="@+id/bt_vol_up"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/bt_100"
-        android:layout_below="@+id/bt_100"
-        android:layout_marginTop="71dp"
-        android:background="@drawable/bt_vol_plus"
-        android:onClick="pressButton"
-        android:src="@drawable/s_vol_plus"
-        android:tag="vol_up" 
-         android:contentDescription="@string/button"/>
-
-    <ImageButton
-        android:id="@+id/bt_vol_down"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/bt_vol_up"
-        android:layout_below="@+id/bt_vol_up"
-        android:layout_marginTop="35dp"
-        android:background="@drawable/bt_vol_less"
-        android:onClick="pressButton"
-        android:src="@drawable/s_vol_less"
-        android:tag="vol_down" 
-         android:contentDescription="@string/button"/>
-
-    <ImageButton
         android:id="@+id/bt_input"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -283,18 +258,6 @@
          android:contentDescription="@string/button"/>
 
     <ImageButton
-        android:id="@+id/bt_red"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_toLeftOf="@+id/bt_green"
-        android:background="@drawable/bt_color_red"
-        android:onClick="pressButton"
-        android:src="@drawable/s_red"
-        android:tag="red" 
-         android:contentDescription="@string/button"/>
-
-    <ImageButton
         android:id="@+id/bt_cursor_down"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -304,30 +267,6 @@
         android:onClick="pressButton"
         android:src="@drawable/s_down"
         android:tag="cursor_down" 
-         android:contentDescription="@string/button"/>
-
-    <ImageButton
-        android:id="@+id/bt_cursor_up"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/bt_cursor_down"
-        android:layout_alignTop="@+id/bt_ch_down"
-        android:background="@drawable/bt_dir_up"
-        android:onClick="pressButton"
-        android:src="@drawable/s_up"
-        android:tag="cursor_up" 
-         android:contentDescription="@string/button"/>
-
-    <ImageButton
-        android:id="@+id/bt_cursor_right"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/bt_cursor_up"
-        android:layout_toRightOf="@+id/bt_cursor_ok"
-        android:background="@drawable/bt_dir_right"
-        android:onClick="pressButton"
-        android:src="@drawable/s_right"
-        android:tag="cursor_right" 
          android:contentDescription="@string/button"/>
 
     <ImageButton
@@ -354,20 +293,8 @@
         android:tag="cursor_ok" 
          android:contentDescription="@string/button"/>
 
-    <ImageButton
-        android:id="@+id/bt_yellow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/bt_green"
-        android:background="@drawable/bt_color_yellow"
-        android:onClick="pressButton"
-        android:src="@drawable/s_yellow"
-        android:tag="yellow" 
-         android:contentDescription="@string/button"/>
-
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/img_channel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignRight="@+id/bt_blue"
@@ -377,13 +304,107 @@
          android:contentDescription="@string/imagem"/>
 
     <ImageView
-        android:id="@+id/imageView1"
+        android:id="@+id/img_volume"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/bt_vol_down"
-        android:layout_alignTop="@+id/imageView2"
+        android:layout_alignTop="@+id/img_channel"
         android:src="@drawable/vol" 
          android:layout_marginLeft="20dp"
          android:contentDescription="@string/imagem"/>
+
+    <ImageButton
+        android:id="@+id/bt_cursor_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/bt_back"
+        android:layout_toRightOf="@+id/bt_cursor_down"
+        android:background="@drawable/bt_dir_right"
+        android:contentDescription="@string/button"
+        android:onClick="pressButton"
+        android:src="@drawable/s_right"
+        android:tag="cursor_right" />
+
+    <ImageButton
+        android:id="@+id/bt_cursor_up"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/bt_cursor_down"
+        android:layout_alignTop="@+id/bt_vol_down"
+        android:background="@drawable/bt_dir_up"
+        android:contentDescription="@string/button"
+        android:onClick="pressButton"
+        android:src="@drawable/s_up"
+        android:tag="cursor_up" />
+
+    <ImageButton
+        android:id="@+id/bt_vol_down"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/bt_vol_up"
+        android:layout_below="@+id/bt_vol_up"
+        android:layout_marginTop="23dp"
+        android:background="@drawable/bt_vol_less"
+        android:contentDescription="@string/button"
+        android:onClick="pressButton"
+        android:src="@drawable/s_vol_less"
+        android:tag="vol_down" />
+
+    <ImageButton
+        android:id="@+id/bt_vol_up"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/bt_100"
+        android:layout_below="@+id/bt_100"
+        android:layout_marginTop="29dp"
+        android:background="@drawable/bt_vol_plus"
+        android:contentDescription="@string/button"
+        android:onClick="pressButton"
+        android:src="@drawable/s_vol_plus"
+        android:tag="vol_up" />
+
+    <ImageButton
+        android:id="@+id/bt_red"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/bt_back"
+        android:layout_below="@+id/bt_back"
+        android:layout_marginTop="27dp"
+        android:background="@drawable/bt_color_red"
+        android:contentDescription="@string/button"
+        android:onClick="pressButton"
+        android:src="@drawable/s_red"
+        android:tag="red" />
+
+    <ImageButton
+        android:id="@+id/bt_yellow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/bt_green"
+        android:layout_toRightOf="@+id/bt_green"
+        android:background="@drawable/bt_color_yellow"
+        android:contentDescription="@string/button"
+        android:onClick="pressButton"
+        android:src="@drawable/s_yellow"
+        android:tag="yellow" />
+
+    <EditText
+        android:id="@+id/textToSend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignTop="@+id/sendText"
+        android:ems="36" />
+
+    <ImageButton
+        android:contentDescription="@string/button"
+        android:id="@+id/sendText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/textToSend"
+        android:src="@android:drawable/ic_menu_send" 
+        android:onClick="sendButton"/>
 
 </RelativeLayout>

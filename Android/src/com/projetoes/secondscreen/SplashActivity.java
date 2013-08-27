@@ -20,7 +20,7 @@ public class SplashActivity extends Activity {
 	            SplashActivity.this.startActivity(mainIntent);
 	            SplashActivity.this.finish();
 	        }
-	    }, 3000);// Sua entrada vai durar por 5 segundos
+	    }, 2000);// Sua entrada vai durar por 2 segundos
 	}
 
 	@Override

@@ -10,7 +10,7 @@
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="hello_world">Hello world!</string>
-        <string name="connect">Connect</string>
+        <string name="connect">Refresh</string>
     <string name="title_activity_splash_">Splash_Activity</string>
     <string name="title_activity_conect_activity">Conect_activity</string>
 
